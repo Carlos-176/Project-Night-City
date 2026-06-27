@@ -1,0 +1,112 @@
+body {
+    background-color: 	#00060e;
+    color: #ffffff;
+    font family: Arial, sans-serif;
+}
+
+h1 {
+    color: #4bff00;
+    font-size: 36px;
+    text-align: left;
+    margin-top: 50px;
+
+}
+
+p {
+    
+    text-align: center;
+}
+    .choom {
+        text-align: center;
+        padding-top: 150px;
+    }
+    
+    .choom-title {
+        text-align: center;
+        font-size: 50px;
+        color: #4bff00;
+    }
+
+    .choom-description {
+        text-align: center;
+        font-size: 17px;
+        color: #ffffff;
+        margin-top: 18px;
+    }
+    
+    .choom-button {
+        background-color: #fee801;
+        color: #4bff00;
+        padding: 12px 24px;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px #000000;
+    }
+    
+body {
+    background-color: #101923;
+    color: white;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.cyber-header {
+    width: 100%;
+    padding-top: 18px;
+}
+
+.cyber-bar {
+    background-color: #fee801;
+    height: 70px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 45px;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 70%,
+        72% 70%,
+        70% 85%,
+        35% 85%,
+        34% 100%,
+        0 100%
+    );
+}
+
+.cyber-logo {
+    color: #4b8f2f;
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    margin: 0;
+}
+
+.accent {
+    position: absolute;
+    height: 10px;
+    width: 60px;
+}
+
+.accent-pink {
+    background-color: #ff00cc;
+    top: -6px;
+    left: 200px;
+}
+
+.accent-green {
+    background-color: #26c943;
+    bottom: -6px;
+    left: 270px;
+}
+
+.accent-cyan {
+    background-color: #33e6e6;
+    top: -6px;
+    right: 40px;
+}
+
+}

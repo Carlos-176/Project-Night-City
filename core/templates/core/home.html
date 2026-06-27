@@ -1,10 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+
         <title>Project Night City</title>
     </head>
     <body>
-        <h1>Welcome to Project Night City</h1>
+        
+        <h1>Project Night City</h1>
+        
         <p>This is my portfolio website.</p>
+        <a class="btn btn-primary" href="{% url 'home' %}">Home</a>
+
+        <section class="choom">
+            <h2 class="choom-title">Projects</h2>
+            <p class="choom-description">This is my personal portfolio. website.</p>
+            <a  class="choom-button" href="#">View Projects</a>
+            
+        </section>
     </body>
+    
 </html>
