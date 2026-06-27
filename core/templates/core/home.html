@@ -1,24 +1,30 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
+    <title>Introduction</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
 
-        <title>Project Night City</title>
-    </head>
-    <body>
-        
-        <h1>Project Night City</h1>
-        
-        <p>This is my portfolio website.</p>
-        <a class="btn btn-primary" href="{% url 'home' %}">Home</a>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">Project Night City</a>
+            <a class="nav-link text-white" href="{% url 'skills' %}">Skills</a>
+        </div>
+    </nav>
 
-        <section class="choom">
-            <h2 class="choom-title">Projects</h2>
-            <p class="choom-description">This is my personal portfolio. website.</p>
-            <a  class="choom-button" href="#">View Projects</a>
-            
-        </section>
-    </body>
-    
+    <section class="intro container">
+        <h1 class="intro-title">Galang, Carlos Angelo M.</h1>
+        <p class="intro-text">
+            I am a student learning web development using Django, HTML, CSS, Bootstrap, GitHub, and VS Code.
+        </p>
+
+        <a class="intro-button" href="{% url 'skills' %}">View My Skills</a>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

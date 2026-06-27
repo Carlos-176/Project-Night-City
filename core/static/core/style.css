@@ -18,7 +18,8 @@ p {
 }
     .choom {
         text-align: center;
-        padding-top: 150px;
+        padding-top: 120px;
+        margin-bottom: 100px;
     }
     
     .choom-title {
@@ -35,12 +36,14 @@ p {
     }
     
     .choom-button {
-        background-color: #fee801;
-        color: #4bff00;
-        padding: 12px 24px;
-        text-decoration: none;
+          background-color: #fee801;
+            color: #4bff00;
+            padding: 12px 24px;
+            text-decoration: none;
         border-radius: 8px;
         font-weight: bold;
+        display: inline-block;
+        margin-top: 10px;
         text-shadow: 1px 1px 2px #000000;
     }
     
@@ -109,4 +112,46 @@ body {
     right: 40px;
 }
 
+.mission {
+    margin-top: 120px;
+    margin-bottom: 120px;
 }
+
+.section-title {
+    font-size: 36px;
+    color: #fee801;
+    margin-bottom: 40px;
+    text-align: center;
+
+}
+
+.mission-card {
+    background-color: #16232e;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+    border: 2px solid #fee801;
+    min-height: 220px;
+}
+
+.mission-card h3 {
+    color: #4bff00;
+    font-size: 18px;
+}
+
+.mission-card h4 {
+    color: #fee801;
+    margin-top: 10px;
+}
+
+.mission-card p {
+    color: white;
+    text-align: left;
+    margin-top: 15px;
+}
+
+
+
+
+
+
