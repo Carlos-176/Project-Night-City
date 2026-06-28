@@ -5,7 +5,7 @@ body {
     margin: 0;
 }
 
-/* NAVBAR */
+
 
 .cyber-nav {
     background-color: #220000;
@@ -36,8 +36,6 @@ body {
 .cyber-link:hover {
     color: white;
 }
-
-/* HOME / INTRODUCTION PAGE */
 
 .intro {
     min-height: 85vh;
@@ -152,8 +150,6 @@ body {
     color: #f0d0d0;
     line-height: 1.5;
 }
-
-/* SKILLS PAGE */
 
 .skills {
     padding-top: 90px;
