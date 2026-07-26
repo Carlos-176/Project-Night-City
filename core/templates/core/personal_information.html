@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personal Information</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg cyber-nav">
+        <div class="container">
+            <a class="navbar-brand cyber-brand" href="{% url 'home' %}">Project Night City</a>
+
+            <div class="navbar-nav">
+                <a class="nav-link" href="{% url 'home' %}">Introduction</a>
+                <a class="nav-link" href="{% url 'skills' %}">Skills</a>
+                <a class="nav-link" href="{% url 'project_list' %}">Projects</a>
+                <a class="nav-link" href="{% url 'personal_information' %}">Personal Info</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1>Personal Information</h1>
+
+        <div class="card">
+            <div class="card-body">
+                <p><strong>Name:</strong> {{ personal_info.first_name }} {{ personal_info.middle_name }} {{ personal_info.last_name }}</p>
+                <p><strong>Summary:</strong> {{ personal_info.summary }}</p>
+                <p><strong>Contact Number:</strong> {{ personal_info.contact_number }}</p>
+                <p><strong>Email:</strong> {{ personal_info.email }}</p>
+                <p><strong>Address:</strong> {{ personal_info.address }}</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
