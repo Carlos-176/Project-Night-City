@@ -3,27 +3,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testimonies</title>
     <link rel="stylesheet" href="{% static 'core/style.css' %}">
 </head>
 <body>
 
 <main class="page-container">
+    <h1>Testimonies</h1>
 
-<h1>Testimonies</h1>
+    <div class="page-actions">
+        <a class="cyber-button" href="{% url 'testimony_create' %}">
+            Leave a Testimony
+        </a>
 
-{% for testimony in testimonies %}
-<div class="card">
-    <h3>{{ testimony.full_name }}</h3>
+        <a class="cyber-button" href="{% url 'home' %}">
+            Return Home
+        </a>
+    </div>
 
-    <a href="{% url 'testimony_detail' testimony.id %}">
-        View Testimony
-    </a>
-</div>
-{% empty %}
-<p>No testimonies yet.</p>
-{% endfor %}
+    <div class="testimony-grid">
+        {% for testimony in testimonies %}
+            <section class="testimony-card">
+                <h3>{{ testimony.full_name }}</h3>
+                <p>{{ testimony.content|truncatewords:20 }}</p>
 
+                <a href="{% url 'testimony_detail' testimony.id %}">
+                    View Full Testimony
+                </a>
+            </section>
+        {% empty %}
+            <p class="empty-message">No testimonies have been submitted yet.</p>
+        {% endfor %}
+    </div>
 </main>
 
 </body>

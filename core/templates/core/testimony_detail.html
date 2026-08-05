@@ -3,21 +3,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Testimony</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ testimony.full_name }}</title>
     <link rel="stylesheet" href="{% static 'core/style.css' %}">
 </head>
 <body>
 
 <main class="page-container">
+    <section class="detail-card">
+        <h1>{{ testimony.full_name }}</h1>
 
-<h1>{{ testimony.full_name }}</h1>
+        <p>{{ testimony.content }}</p>
 
-<p>{{ testimony.content }}</p>
-
-<a href="{% url 'testimony_list' %}">
-    Back
-</a>
-
+        <a href="{% url 'testimony_list' %}">
+            Back to Testimonies
+        </a>
+    </section>
 </main>
 
 </body>

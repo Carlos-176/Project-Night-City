@@ -3,18 +3,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inquiry Sent</title>
     <link rel="stylesheet" href="{% static 'core/style.css' %}">
 </head>
 <body>
 
 <main class="page-container">
-    <section class="form-card">
-        <h1>Thank You!</h1>
+    <section class="success-card">
+        <h1>Inquiry Sent</h1>
 
-        <p>Your inquiry has been sent successfully.</p>
+        <p>
+            Thank you for reaching out. Your inquiry was submitted successfully.
+        </p>
 
-        <a href="{% url 'home' %}">Return Home</a>
+        <a href="{% url 'home' %}">
+            Return Home
+        </a>
     </section>
 </main>
 
