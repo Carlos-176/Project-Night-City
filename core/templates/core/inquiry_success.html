@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inquiry Sent</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+<body>
+
+<main class="page-container">
+    <section class="form-card">
+        <h1>Thank You!</h1>
+
+        <p>Your inquiry has been sent successfully.</p>
+
+        <a href="{% url 'home' %}">Return Home</a>
+    </section>
+</main>
+
+</body>
+</html>

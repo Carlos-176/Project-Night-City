@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testimonies</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+<body>
+
+<main class="page-container">
+
+<h1>Testimonies</h1>
+
+{% for testimony in testimonies %}
+<div class="card">
+    <h3>{{ testimony.full_name }}</h3>
+
+    <a href="{% url 'testimony_detail' testimony.id %}">
+        View Testimony
+    </a>
+</div>
+{% empty %}
+<p>No testimonies yet.</p>
+{% endfor %}
+
+</main>
+
+</body>
+</html>
