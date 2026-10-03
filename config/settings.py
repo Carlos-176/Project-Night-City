@@ -10,20 +10,31 @@ from decouple import config, Csv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default='django-insecure-$oyxhjhdc17!%)urp#)kly3za!)z44k=lzo(+=pxc093m-d40l')
+SECRET_KEY = config(
+    'SECRET_KEY',
+    default='django-insecure-$oyxhjhdc17!%)urp#)kly3za!)z44k=lzo(+=pxc093m-d40l'
+)
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost', cast=Csv())
+
+# Hosts allowed to access this Django application
+ALLOWED_HOSTS = config(
+    'ALLOWED_HOSTS',
+    default='127.0.0.1,localhost,cmgalang17.pythonanywhere.com',
+    cast=Csv()
+)
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    "core",
-    
+    'core',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -31,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -42,7 +54,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'config.urls'
+
 
 TEMPLATES = [
     {
@@ -59,11 +73,11 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
-# [docs.djangoproject.com](https://docs.djangoproject.com/en/6.0/ref/settings/#databases)
 
 DATABASES = {
     'default': {
@@ -74,7 +88,6 @@ DATABASES = {
 
 
 # Password validation
-# [docs.djangoproject.com](https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators)
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -93,7 +106,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# [docs.djangoproject.com](https://docs.djangoproject.com/en/6.0/topics/i18n/)
 
 LANGUAGE_CODE = 'en-us'
 
@@ -104,7 +116,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# [docs.djangoproject.com](https://docs.djangoproject.com/en/6.0/howto/static-files/)
+# Static files
 
 STATIC_URL = 'static/'
