@@ -1,45 +1,114 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Project Detail</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="[cdn.jsdelivr.net](https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css)" rel="stylesheet">
+    <title>{{ project.project_name }} - Project Night City</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'core/style.css' %}">
 </head>
 
 <body>
 
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg cyber-nav">
         <div class="container">
-            <a class="navbar-brand cyber-brand" href="{% url 'home' %}">Project Night City</a>
+
+            <a class="navbar-brand cyber-brand" href="{% url 'home' %}">
+                Project Night City
+            </a>
 
             <div class="navbar-nav">
-                <a class="nav-link" href="{% url 'home' %}">Introduction</a>
-                <a class="nav-link" href="{% url 'skills' %}">Skills</a>
-                <a class="nav-link" href="{% url 'project_list' %}">Projects</a>
-                <a class="nav-link" href="{% url 'personal_information' %}">Personal Info</a>
+                <a class="nav-link cyber-link" href="{% url 'home' %}">
+                    Introduction
+                </a>
+
+                <a class="nav-link cyber-link" href="{% url 'skills' %}">
+                    Skills
+                </a>
+
+                <a class="nav-link cyber-link" href="{% url 'project_list' %}">
+                    Projects
+                </a>
+
+                <a class="nav-link cyber-link" href="{% url 'personal_information' %}">
+                    Personal Info
+                </a>
             </div>
+
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <h1>{{ project.project_name }}</h1>
+    <!-- Project Details -->
+    <div class="container mt-5 mb-5">
 
-        <div class="card">
-            <div class="card-body">
-                <p><strong>Description:</strong> {{ project.description }}</p>
-                <p><strong>Tech Stack:</strong> {{ project.tech_stack }}</p>
+        <div class="intro-box p-4">
+
+            <h1 class="text-warning fw-bold mb-4">
+                {{ project.project_name }}
+            </h1>
+
+            <!-- Description -->
+            <div class="mb-4">
+                <h5 class="text-warning fw-bold">
+                    Description
+                </h5>
+
+                <p class="text-light mb-0">
+                    {{ project.description }}
+                </p>
+            </div>
+
+            <!-- Tech Stack -->
+<div class="mb-4">
+    <h5 class="text-warning fw-bold">
+        Tech Stack
+    </h5>
+
+    <div class="d-flex flex-wrap gap-2">
+        {% for tech_stack in project.tech_stacks.all %}
+            <span class="badge bg-warning text-dark">
+                {{ tech_stack.name }}
+            </span>
+        {% empty %}
+            <p class="text-light mb-0">
+                No tech stack added.
+            </p>
+        {% endfor %}
+    </div>
+</div>
+
+            <!-- Project Link -->
+            <div class="mb-4">
+                <h5 class="text-warning fw-bold">
+                    Project Link
+                </h5>
 
                 {% if project.link %}
-                    <p><strong>Link:</strong> <a href="{{ project.link }}">{{ project.link }}</a></p>
+                    <a href="{{ project.link }}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="text-warning">
+                        {{ project.link }}
+                    </a>
                 {% else %}
-                    <p><strong>Link:</strong> No link available</p>
+                    <p class="text-light mb-0">
+                        No link available.
+                    </p>
                 {% endif %}
             </div>
+
+            <!-- Back Button -->
+            <a href="{% url 'project_list' %}"
+               class="btn btn-warning fw-bold">
+                &larr; Back to Projects
+            </a>
+
         </div>
 
-        <a href="{% url 'project_list' %}" class="btn btn-warning mt-3">Back to Projects</a>
     </div>
 
 </body>
