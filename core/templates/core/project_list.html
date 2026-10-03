@@ -1,41 +1,80 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Projects</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Project Night City</title>
+    <link href="[cdn.jsdelivr.net](https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css)" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'core/style.css' %}">
 </head>
-
 <body>
 
     <nav class="navbar navbar-expand-lg cyber-nav">
-        <div class="container">
-            <a class="navbar-brand cyber-brand" href="{% url 'home' %}">Project Night City</a>
-
-            <div class="navbar-nav">
-                <a class="nav-link" href="{% url 'home' %}">Introduction</a>
-                <a class="nav-link" href="{% url 'skills' %}">Skills</a>
-                <a class="nav-link" href="{% url 'project_list' %}">Projects</a>
-                <a class="nav-link" href="{% url 'personal_information' %}">Personal Info</a>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <a class="navbar-brand cyber-brand mb-0" href="{% url 'home' %}">Project Night City</a>
+            <div style="display: flex; gap: 18px; align-items: center; flex-wrap: wrap;">
+                <a class="nav-link cyber-link" href="{% url 'home' %}">Introduction</a>
+                <a class="nav-link cyber-link" href="{% url 'skills' %}">Skills</a>
+                <a class="nav-link cyber-link text-warning fw-bold" href="{% url 'project_list' %}">Projects</a>
+                <a class="nav-link cyber-link" href="{% url 'personal_information' %}">Personal Info</a>
+                <a class="nav-link cyber-link" href="{% url 'inquiry_create' %}">Contact</a>
+                <a class="nav-link cyber-link" href="{% url 'testimony_list' %}">Testimonies</a>
+                <a class="nav-link cyber-link" href="{% url 'admin_login' %}">Admin</a>
             </div>
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <h1>Projects</h1>
-        <p>Here are the projects stored in my database.</p>
+    <div class="container" style="max-width: 1000px; margin: 50px auto 50px auto;">
 
-        {% for project in projects %}
-            <div class="card mb-3">
-                <div class="card-body">
-                    <a href="{% url 'project_detail' project.id %}">
-                        {{ project.project_name }}
-                    </a>
+        <div class="row g-3">
+
+            <!-- Header box, aligned to the same grid as the cards -->
+            <div class="col-12">
+                <div class="intro-box" style="padding: 20px 18px;">
+                    <p class="intro-label mb-2" style="font-size: 0.8rem;">DATABASE ARCHIVE</p>
+                    <h1 class="intro-title mb-2" style="font-size: 1.6rem;">PROJECTS</h1>
+                    <p class="intro-text mb-0" style="font-size: 0.85rem;">Here are the projects stored in my database.</p>
                 </div>
             </div>
-        {% endfor %}
+
+            {% for project in projects %}
+                <div class="col-md-6 col-12">
+                    <div class="intro-box h-100" style="padding: 18px;">
+                        <h3 class="mb-2" style="font-size: 1.1rem;">
+                            <a href="{% url 'project_detail' project.id %}" class="text-warning text-decoration-none">
+                                {{ project.project_name }}
+                            </a>
+                        </h3>
+
+                        <p class="text-light mb-3" style="font-size: 0.85rem;">
+                            {{ project.description }}
+                        </p>
+
+                        <p class="mb-3" style="font-size: 0.85rem;">
+                            <span class="text-warning fw-bold">Tech Stack:</span>
+                            {% for stack in project.tech_stacks.all %}
+                                <span class="badge bg-warning text-dark">{{ stack.name }}</span>
+                            {% empty %}
+                                <span class="text-muted">None</span>
+                            {% endfor %}
+                        </p>
+
+                        <a href="{% url 'project_detail' project.id %}" class="btn btn-warning btn-sm fw-bold">
+                            View Details &rarr;
+                        </a>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12">
+                    <div class="intro-box text-center" style="padding: 20px 18px;">
+                        <p class="text-muted m-0">No projects added yet.</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
     </div>
 
 </body>
