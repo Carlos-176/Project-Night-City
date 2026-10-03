@@ -5,21 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testimonies - Project Night City</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'core/style.css' %}">
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-lg cyber-nav">
         <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <a class="navbar-brand cyber-brand mb-0" href="{% url 'home' %}">Project Night City</a>
+            <a class="navbar-brand cyber-brand mb-0" href="{% url 'home' %}">
+                Project Night City
+            </a>
+
             <div style="display: flex; gap: 18px; align-items: center; flex-wrap: wrap;">
                 <a class="nav-link cyber-link" href="{% url 'home' %}">Introduction</a>
                 <a class="nav-link cyber-link" href="{% url 'skills' %}">Skills</a>
                 <a class="nav-link cyber-link" href="{% url 'project_list' %}">Projects</a>
                 <a class="nav-link cyber-link" href="{% url 'personal_information' %}">Personal Info</a>
                 <a class="nav-link cyber-link" href="{% url 'inquiry_create' %}">Contact</a>
-                <a class="nav-link cyber-link text-warning fw-bold" href="{% url 'testimony_list' %}">Testimonies</a>
+                <a class="nav-link cyber-link text-warning fw-bold" href="{% url 'testimony_list' %}">
+                    Testimonies
+                </a>
             </div>
         </div>
     </nav>
@@ -30,46 +37,69 @@
 
             <div class="col-12">
                 <div class="intro-box" style="padding: 20px 18px;">
-                    <p class="intro-label mb-2" style="font-size: 0.8rem;">VOICES FROM THE CITY</p>
-                    <h1 class="intro-title mb-2" style="font-size: 1.6rem;">TESTIMONIES</h1>
-                    <p class="intro-text mb-0" style="font-size: 0.85rem;">Messages and feedback left by visitors of this portfolio.</p>
+                    <p class="intro-label mb-2" style="font-size: 0.8rem;">
+                        VOICES FROM THE CITY
+                    </p>
+
+                    <h1 class="intro-title mb-2" style="font-size: 1.6rem;">
+                        TESTIMONIES
+                    </h1>
+
+                    <p class="intro-text mb-0" style="font-size: 0.85rem;">
+                        Messages and feedback left by visitors of this portfolio.
+                    </p>
                 </div>
             </div>
 
-                       <!-- Action row -->
+            <!-- Action row -->
             <div class="col-12" style="margin-bottom: 18px;">
                 <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+
                     <a href="{% url 'testimony_create' %}"
                        style="background-color: #ffd700; color: #000; padding: 10px 24px; border-radius: 4px; font-weight: bold; text-decoration: none;">
                         LEAVE A TESTIMONY
                     </a>
+
                     <a href="{% url 'home' %}"
                        style="background-color: #4a0000; color: #ffd700; padding: 10px 24px; border-radius: 4px; border: 2px solid #ffd700; font-weight: bold; text-decoration: none;">
                         RETURN HOME
                     </a>
+
                 </div>
             </div>
 
-
-
-
             <!-- Testimony cards -->
             {% for testimony in testimonies %}
+
                 <div class="col-md-6 col-12">
                     <div class="intro-box h-100" style="padding: 18px;">
-                        <h3 class="text-warning fw-bold mb-2" style="font-size: 1.1rem;">{{ testimony.full_name }}</h3>
-                        <p class="text-light mb-3" style="font-size: 0.85rem;">{{ testimony.content }}</p>
-                        <a href="{% url 'testimony_detail' testimony.id %}" class="btn btn-warning btn-sm fw-bold">
+
+                        <h3 class="text-warning fw-bold mb-2" style="font-size: 1.1rem;">
+                            {{ testimony.full_name }}
+                        </h3>
+
+                        <p class="text-light mb-3" style="font-size: 0.85rem;">
+                            {{ testimony.content }}
+                        </p>
+
+                        <a href="{% url 'testimony_detail' testimony.id %}"
+                           class="btn btn-warning btn-sm fw-bold">
                             View &rarr;
                         </a>
+
                     </div>
                 </div>
+
             {% empty %}
+
                 <div class="col-12">
                     <div class="intro-box text-center" style="padding: 20px 18px;">
-                        <p class="text-muted m-0">No testimonies have been submitted yet.</p>
+                        <p class="text-light m-0">
+                            No testimonies have been submitted yet.
+                        </p>
                     </div>
                 </div>
+
             {% endfor %}
 
         </div>
@@ -78,4 +108,3 @@
 
 </body>
 </html>
-
