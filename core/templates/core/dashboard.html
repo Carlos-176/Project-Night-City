@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Project Night City</title>
+    <link href="[cdn.jsdelivr.net](https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css)" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+<body class="bg-dark text-light">
+
+<nav class="navbar navbar-expand-lg cyber-nav bg-black border-bottom border-warning">
+    <div class="container">
+        <a class="navbar-brand text-warning fw-bold" href="{% url 'dashboard' %}">ADMIN DASHBOARD</a>
+        <div class="d-flex gap-3 align-items-center">
+            <a class="nav-link text-light" href="{% url 'home' %}">View Site</a>
+            <a class="nav-link text-warning" href="{% url 'dashboard_projects' %}">Projects</a>
+            <a class="nav-link text-warning" href="{% url 'dashboard_tech_stacks' %}">Tech Stacks</a>
+            <a class="btn btn-outline-danger btn-sm" href="{% url 'admin_logout' %}">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container py-4">
+    <h2 class="text-warning mb-4">Dashboard Overview</h2>
+
+    <!-- Table of Projects -->
+    <div class="card bg-black border-secondary p-3 mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-light m-0">Projects</h4>
+            <a href="{% url 'project_create' %}" class="btn btn-warning btn-sm fw-bold">+ Add Project</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-dark table-hover table-bordered m-0">
+                <thead>
+                    <tr class="table-warning text-dark">
+                        <th>Project Name</th>
+                        <th>Description</th>
+                        <th>tech_stack</th>
+                        <th>link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for project in projects %}
+                        <tr>
+                            <td class="fw-bold">{{ project.project_name }}</td>
+                            <td>{{ project.description|truncatechars:50 }}</td>
+                            <td>
+                                {% for ts in project.tech_stacks.all %}
+                                    {{ ts.name }}{% if not forloop.last %}, {% endif %}
+                                {% empty %}
+                                    <span class="text-muted">None</span>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% if project.link %}
+                                    <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" class="text-info">{{ project.link }}</a>
+                                {% else %}
+                                    <span class="text-muted">No link</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr><td colspan="4" class="text-center text-muted">No projects added yet.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Table of Tech Stacks -->
+    <div class="card bg-black border-secondary p-3">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-light m-0">Tech Stacks</h4>
+            <a href="{% url 'tech_stack_create' %}" class="btn btn-warning btn-sm fw-bold">+ Add Tech Stack</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-dark table-hover table-bordered m-0">
+                <thead>
+                    <tr class="table-warning text-dark">
+                        <th>Tech Stack Name</th>
+                        <th>Project It Was Used</th>
+                        <th>Date when this tech stack was added</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stack in tech_stacks %}
+                        <tr>
+                            <td class="fw-bold">{{ stack.name }}</td>
+                            <td>
+                                {% for proj in stack.projects.all %}
+                                    {{ proj.project_name }}{% if not forloop.last %}, {% endif %}
+                                {% empty %}
+                                    <span class="text-muted">Not used in any project</span>
+                                {% endfor %}
+                            </td>
+                            <td>{{ stack.created_at|date:"Y-m-d H:i" }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr><td colspan="3" class="text-center text-muted">No tech stacks added yet.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
